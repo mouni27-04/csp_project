@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - Community Project</title>
+  <style>
+    :root {
+      --bg-color: #f4f6f9;
+      --text-color: #333;
+      --card-bg: #fff;
+      --highlight: crimson;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f4f4f4;
+      --card-bg: #2c2c2c;
+      --highlight: #ff4081;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .marquee, .home-intro, .banner, .events-container {
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .marquee {
+      margin: 30px auto 20px;
+      background-color: #fffce0;
+      padding: 12px 20px;
+      border-left: 6px solid #ffc107;
+      border-radius: 6px;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .home-intro {
+      text-align: center;
+      margin: 40px auto;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .home-intro h1 span {
+      color: #ff6600;
+    }
+
+    .home-intro a {
+      padding: 10px 20px;
+      background-color: midnightblue;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .home-intro a:hover {
+      background-color: yellow;
+      color: midnightblue;
+    }
+
+    .banner {
+      background: linear-gradient(to right, #003366, #0055aa);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .filter-buttons {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .filter-buttons button {
+      margin: 5px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .filter-buttons button.active {
+      background-color: #0055aa;
+      color: white;
+    }
+
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-container input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .event-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .badge {
+      background: var(--highlight);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 11px;
+      float: right;
+    }
+
+    .tag {
+      background: #e0ecff;
+      color: #004aad;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 6px;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 6px 10px;
+      border: none;
+      background: #444;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="banner">
+    <h1>College Events</h1>
+    <p>Stay updated with the latest academic, cultural & technical activities</p>
+  </div>
+<div class="marquee">
+    <h1><marquee>Identification of Students who Choose Either Inter Or Diploma After SSC</marquee></h1>
+  </div>
+
+  <div class="filter-buttons">
+    <button onclick="filterEvents('all')" class="active">All</button>
+    <button onclick="filterEvents('Academic')">Academic</button>
+    <button onclick="filterEvents('Tech')">Tech</button>
+    <button onclick="filterEvents('Cultural')">Cultural</button>
+    <button onclick="filterEvents('Sports')">Sports</button>
+  </div>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search events..." onkeyup="searchEvents()">
+  </div>
+
+  <div class="events-container" id="events">
+    <div class="event-card" data-type="Academic">
+      <span class="badge">New</span>
+      <div>📅 June 10, 2025</div>
+      <h3>Orientation Day for Freshers</h3>
+      <p>Welcome session and tour.</p>
+      <span class="tag">Academic</span>
+    </div>
+
+    <div class="event-card" data-type="Tech">
+      <span class="badge" style="background: green">Upcoming</span>
+      <div>📅 July 5, 2025</div>
+      <h3>Technical Symposium</h3>
+      <p>Workshops and coding events.</p>
+      <span class="tag">Tech</span>
+    </div>
+
+    <div class="event-card" data-type="Cultural">
+      <div>📅 August 15, 2025</div>
+      <h3>Independence Day Celebrations</h3>
+      <p>Flag hoisting and performances.</p>
+      <span class="tag">Cultural</span>
+    </div>
+
+    <div class="event-card" data-type="Sports">
+      <span class="badge" style="background: orange">Hot</span>
+      <div>📅 September 9, 2025</div>
+      <h3>Annual Sports Fest</h3>
+      <p>Cricket, volleyball, athletics.</p>
+      <span class="tag">Sports</span>
+    </div>
+  </div>
+
+  <script>
+    function filterEvents(type) {
+      const cards = document.querySelectorAll('.event-card');
+      const buttons = document.querySelectorAll('.filter-buttons button');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[onclick*="${type}"]`).classList.add('active');
+
+      cards.forEach(card => {
+        const match = card.dataset.type === type || type === 'all';
+        card.style.display = match ? 'block' : 'none';
+      });
+    }
+
+    function searchEvents() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.event-card');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      }
+    };
+  </script>
+</body>
+</html>

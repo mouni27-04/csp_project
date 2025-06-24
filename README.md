@@ -1,1 +1,1 @@
-# csp_project
+# inter-diploma
